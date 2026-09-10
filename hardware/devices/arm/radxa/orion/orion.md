@@ -24,20 +24,20 @@ Network: 2x 5Gig Ethernet  + M.2 E key (4.0 2x lanes)<br/>
 | Mainline     | 🟢 Works    | ACPI boot only ATM                                                                                                                    |
 | CPU          | 🟡 Partial  | Some cores run at [reduced](https://forum.radxa.com/t/clarification-about-the-o6-spec-change/26493) speeds (2.6GHz instead of 2.8GHz) |
 | RAM          | 🟢 Works    | All memory is detected (up to 64gb)                                                                                                   |
-| GPU          | 🔴 Broken   | Pending panthor driver [merge request](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/34032)                               |
-| NPU          | 🔴 Broken   | No driver                                                                                                                             |
-| HW Encode    | 🔴 Broken   | No driver                                                                                                                             |
-| HW Decode    | 🔴 Broken   | No driver                                                                                                                             |
+| GPU          | 🔴 Broken   | So-called "5th Gen" is [merged](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/34032), but missing support in kernel       |
+| NPU          | 🔴 Broken   | No driver, won't be implemented                                                                                                       |
+| HW Encode    | 🔴 Broken   | No driver, won't be implemented                                                                                                       |
+| HW Decode    | 🔴 Broken   | No driver, won't be implemented                                                                                                       |
 | HDMI         | 🟡 Partial  | EFI FB partially works (1080P@60Hz on most monitors)                                                                                  |
 | DP           | 🟡 Partial  | Same as above                                                                                                                         |
 | eDP          | 🟡 Partial  | Same as above, Confirmed working on a NE140QDM-NX1 panel                                                                              |
 | USB-C DP     | 🟡 Partial  | Same as above                                                                                                                         |
 | Storage      | 🟢 Works    | M.2 SSDs work as expected                                                                                                             |
 | Ethernet     | 🟢 Works    | Random chance of the drivers [crashing](https://forum.radxa.com/t/miscellaneous-testing/26642/13) on boot                             |
-| Front USB    | 🟢 Works    | Needs [9.0.0 firmware](https://dl.radxa.com/orion/o6/images/bios/SystemReady/latest)                                                  |
-| Rear USB     | 🟢 Works    | Not sure if it's on my end but some ports occasionally disconnect?                                                                    |
-| Front audio  | ⚫ Untested |                                                                                                                                       |
-| Rear audio   | 🔴 Broken   |                                                                                                                                       |
+| Front USB    | 🟡 Partial  | Needs [9.0.0 firmware](https://dl.radxa.com/orion/o6/images/bios/SystemReady/latest) or higher. Missing in the Device Tree, ACPI only.|
+| Rear USB     | 🟡 Partial  | Not sure if it's on my end but some ports occasionally disconnect?                                                                    |
+| Front audio  | 🔴 Broken   | DMA-350 isn't in the release, and the IPBLOQ HDA controller isn't wired in DT. Also, upstreamed code doesn't support ACPI, only DT.   |
+| Rear audio   | 🔴 Broken   | Same as above                                                                                                                         |
 | RTC          | 🟢 Works    |                                                                                                                                       |
 | UART         | 🟢 Works    | UART2 for Boot / Linux console                                                                                                        |
 | PCIE         | 🟡 Partial  | Works fine for most devices but some GPUs don't get detected (see below)                                                              |
@@ -46,7 +46,7 @@ Network: 2x 5Gig Ethernet  + M.2 E key (4.0 2x lanes)<br/>
 | Thermals     | 🟢 Works    | Needs [0.3.0-1 firmware](https://github.com/radxa-pkg/edk2-cix/releases/tag/0.3.0-1)                                                  |
 | Fan control  | 🟡 Partial  | Auto fan control, No way to control from OS                                                                                           |
 | Power Button | 🔴 Broken   |                                                                                                                                       |
-| GPIO         | 🔴 Broken   |                                                                                                                                       |
+| GPIO         | 🟡 Partial  | Added in 7.1 as a Device Tree node                                                                                                    |
 | LEDs         | 🔴 Broken   |                                                                                                                                       |
 | Touch Panel  | ⚫ Untested |                                                                                                                                       |
 
@@ -62,6 +62,7 @@ Anything with a link is tested by someone other than me, Credits go to them.<br/
 | RX 560      | 🟢 Works   | [Source](https://forum.radxa.com/t/recommended-external-gpu-for-o6/26898/14)                                                                      |
 | RX 580      | 🟢 Works   |                                                                                                                                                   |
 | RX 5600     | 🟢 Works   |                                                                                                                                                   |
+| RX 5700 XT  | 🟢 Works   |                                                                                                                                                   |
 | RX 6400     | 🟢 Works   | [Source](https://forum.radxa.com/t/orion-o6s-pcie-x16-slot-wattage-12v-q/27262/8)                                                                 |
 | RX 6500     | 🟢 Works   | [Works but needs 6.15 kernel](https://forum.radxa.com/t/orion-o6-debug-party-invitation/25054/494)                                                |
 | RX 6600     | 🟢 Works   | [Works but needs 6.15 kernel](https://forum.radxa.com/t/orion-o6-debug-party-invitation/25054/496)                                                |
