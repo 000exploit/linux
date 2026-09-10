@@ -16,6 +16,9 @@ Network: 2x 5Gig Ethernet  + M.2 E key (4.0 2x lanes)<br/>
 > [!CAUTION]
 > The UEFI provided above *offers* overclocking functionality which __might damage board__ if you enter incorrect settings, __Please do not contact or blame radxa for any damage done to your board if you choose to overclock__, Do so at your own risk.
 
+> [!TIP]
+> Cixtech offers [official patchsets](https://github.com/cixtech/cix-linux-main) for mainline kernels, but they're making the system unstable, often causing kernel panics for various reasons and, unfortunately, some patched were found to be written by ["AI"](https://github.com/cixtech/cix-linux-main/blob/6d69935080f85fb9ae2fb5335f50434215a3b0aa/patches-7.1/00111-drm-panthor-add-ACPI-CIXH5000-platform-binding.patch#L10).
+
 <br/><br/><br/><br/><br/><br/><br/><br/>
 
 # Mainline support
